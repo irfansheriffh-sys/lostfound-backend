@@ -4,7 +4,12 @@ const multer = require("multer");
 const { MongoClient } = require("mongodb");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "*",
+  methods: ["GET","POST"],
+  allowedHeaders: ["Content-Type"]
+}));
+
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
